@@ -1,0 +1,59 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include("conexion.php"); // Conecta a la base de datos
+
+    $nombre = htmlspecialchars($_POST['nombre']);
+    $email = htmlspecialchars($_POST['email']);
+    $mensaje = htmlspecialchars($_POST['mensaje']);
+
+    // Escapar los datos para evitar inyección
+    $nombre = $conn->real_escape_string($nombre);
+    $email = $conn->real_escape_string($email);
+    $mensaje = $conn->real_escape_string($mensaje);
+
+    // Insertar datos en la base
+    $sql = "INSERT INTO mensajes (nombre, email, mensaje) VALUES ('$nombre', '$email', '$mensaje')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "
+        <html>
+        <head>
+          <meta charset='UTF-8'>
+          <title>Gracias por contactarnos</title>
+          <style>
+            body {
+              font-family: Arial;
+              background: #f9f9f9;
+              text-align: center;
+              padding: 50px;
+            }
+            .mensaje {
+              background: #d4edda;
+              color: #155724;
+              padding: 20px;
+              border-radius: 10px;
+              display: inline-block;
+            }
+            a {
+              display: block;
+              margin-top: 20px;
+              color: #007bff;
+              text-decoration: none;
+            }
+          </style>
+        </head>
+        <body>
+          <div class='mensaje'>
+            <h2>¡Gracias por contactarnos, $nombre!</h2>
+            <p>Tu mensaje ha sido guardado correctamente.</p>
+          </div>
+          <a href='index.html'>Volver al inicio</a>
+        </body>
+        </html>";
+    } else {
+        echo "Error al guardar el mensaje: " . $conn->error;
+    }
+
+    $conn->close();
+}
+?>

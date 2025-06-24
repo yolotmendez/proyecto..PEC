@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donaciones para el PEC</title>
+    <link rel="stylesheet" href="doodoo.css">
+</head>
+<body>
+<header>
+    <h1>PEC</h1>
+    <p>Tu donación contribuye a mejorar todos nuestros proyectos</p>
+</header>
+<div class="container">
+    <div class="form-container">
+        <h2>Formulario de Donación</h2>
+        <form id="donacion-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="numero">numero telefonico:</label>
+            <input type="text" id="numero" name="numero" required>
+            <label for="gmail">Correo electrónico:</label>
+            <input type="text" id="gmail" name="gmail" required>
+            <label for="monto">Monto de la donación MXN:</label>
+            <input type="number" id="monto" name="monto" min="1" required>
+            <center><button type="submit" class="submit-btn">Donar Ahora</button></center>
+        </form>
+        <div id="pago-container">
+            <label for="pago">Selecciona la forma de pago:</label>
+            <select id="pago">
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="tarjeta">Tarjeta de crédito/débito</option>
+                <option value="paypal">PayPal</option>
+                <option value="oxxo">OXXO</option>
+            </select>
+        </div>
+        <div id="gracias-mensaje">
+            <h3>Gracias por tu generosa donación</h3>
+            <p>Nos ayudas a crear un mejor sitio para todos</p>
+        </div>
+    </div>
+</div>
+<script>
+    const form = document.getElementById('donacion-form');
+    const pagoContainer = document.getElementById('pago-container');
+    const pagoSelect = document.getElementById('pago');
+    const graciasMensaje = document.getElementById('gracias-mensaje');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        pagoContainer.style.display = 'block';
+    });
+    pagoSelect.addEventListener('change', function() {
+        if (pagoSelect.value) {
+            pagoContainer.style.display = 'none';
+            graciasMensaje.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>

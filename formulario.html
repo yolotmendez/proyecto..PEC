@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Ambiental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+        form {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            background-color: #43a047;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        .back-button {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulario de Registro Ambiental</h2>
+    <form action="registrar.php" method="POST">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" id="edad" required min="1">
+
+        <label for="campaña">Campaña:</label>
+        <select name="campaña" id="campaña" required>
+            <option value="">Selecciona una campaña</option>
+            <option value="Reforestación">Reforestación</option>
+            <option value="Limpieza de ríos">Limpieza de ríos</option>
+            <option value="Reciclaje">Reciclaje</option>
+        </select>
+
+        <label for="aporte">¿Qué deseas aportar?:</label>
+        <input type="text" name="aporte" id="aporte" required>
+
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+</html>
